@@ -1,0 +1,16 @@
+<h1>My Recipes</h1>
+
+<% courage_text = Recipe.where(user: current_user).present? ? "You have already shared delicious recipes, keep adding them!" : "You don't have yet any recipes, why won't you create first one?" %>
+<h3><%= courage_text %></h3>
+<%= button_to "New Recipe", new_recipe_path, method: :get, class: "default-button green-background" %>
+
+<div id="recipes" class="menu-recipes">
+  <% @recipes.each do |recipe| %>
+    <% if recipe.user == current_user %>
+      <div class="menu-image">
+        <a class="margin-bottom-1rem"><%= recipe.name %></a>
+      <%= link_to image_tag(recipe.featured_image.present? ? recipe.featured_image : "default-food-pic.png", class: "child-full-width"), recipe %>
+    </div>
+    <% end %>
+  <% end %>
+</div>

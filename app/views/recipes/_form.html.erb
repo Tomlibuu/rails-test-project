@@ -1,0 +1,53 @@
+<%= form_with model: recipe do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div style="margin-top: 2rem">
+    <%= form.label :instructions, style: "display: block" %>
+    <%= form.rich_text_area :instructions %>
+  </div>
+
+  <div id="ingredients-fields" style="margin-top: 2rem">
+    <%= form.label "Input ingredients, press Add ingredient if needed to add more" %>
+    <% (recipe.ingredients.presence || [""]).each do |ingredient| %>
+      <div class="ingredient-field">
+        <%= text_field_tag "recipe[ingredients][]", ingredient %>
+      </div>
+    <% end %>
+  </div>
+
+  <button type="button" onclick="addIngredientField()">➕ Add Ingredient</button>
+  
+  <% if recipe.featured_image.attached? %>
+    <p>Current image:</p>
+    <%= image_tag recipe.featured_image, class: "image" %>
+    <div style="margin-top: 2rem; margin-bottom: 2rem; display: flex; flex-direction: column">
+      <%= form.label "Check the box below and update recipe if you want to remove image" %>
+      <div>
+        <%= form.check_box :remove_featured_image %>
+        <%= form.label :remove_featured_image, "Remove image" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :featured_image, style: "display: block" %>
+    <%= form.file_field :featured_image, accept: "image/*" %>
+  </div>
+
+  <div style="margin-top: 2rem">
+    <%= form.submit class: "default-button" %>
+  </div>
+
+  <script>
+  function addIngredientField() {
+    const container = document.getElementById("ingredients-fields");
+    const newField = document.createElement("div");
+    newField.classList.add("ingredient-field");
+    newField.innerHTML = '<input type="text" name="recipe[ingredients][]" />';
+    container.appendChild(newField);
+  }
+</script>
+<% end %>

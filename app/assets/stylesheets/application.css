@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+nav {
+  justify-content: flex-end;
+  display: flex;
+  font-size: 0.875em;
+  gap: 0.5rem;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: lightblue;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+nav a {
+  display: inline-block;
+}
+
+main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%
+}
+
+.notice {
+  color: green;
+}
+
+.info-box {
+  border: 2px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  width: 40%
+}
+
+section.product {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+section.product img {
+  border-radius: 8px;
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.menu-image {
+  width: 30vw;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .1rem solid lightblue
+}
+
+.menu-recipes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image {
+  max-width: 60%;
+  margin-bottom: 1rem;
+}
+
+.child-full-width {
+  width: 100%
+}
+
+.default-button {
+  min-width: 10rem;
+  border-radius: 100px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.green-background {
+  background-color: greenyellow;
+}
+
+.red-background {
+  background-color: red;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
+.active-button {
+  background-color: lightgrey;
+}
