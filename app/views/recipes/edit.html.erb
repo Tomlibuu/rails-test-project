@@ -1,0 +1,9 @@
+<h1>Edit recipe</h1>
+
+<div style="margin-left: 2rem; margin-right: 2rem;">
+  <%= render "form", recipe: @recipe %>
+</div>
+
+<div style="margin-top: 2rem; margin-bottom: 2rem">
+  <%= button_to "Cancel", @recipe, method: :get, class: "default-button" %>
+</div>

@@ -1,0 +1,30 @@
+<div style="margin-top: 1rem; margin-right: auto; margin-left: 1rem"><%= button_to "Back", recipes_path, method: :get, class: "default-button" %></div>
+
+<h1><%= @recipe.name %></h1>
+<h4>Created by: <%= @recipe.user.email_address %></h4>
+<%= image_tag @recipe.featured_image, class: "image" if @recipe.featured_image.attached? %>
+
+<% if @recipe.ingredients.present? %>
+  <div class="info-box">
+    <h3>Ingredients</h3>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <%= ingredient %>
+      </li>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @recipe.instructions.present? %>
+  <div class="info-box">
+    <h3>Instructions</h3>
+    <%= @recipe.instructions %>
+  </div>
+<% end %>
+
+<% if @recipe.user == current_user %>
+  <div style="gap: 2rem; display: flex; margin-top: 2rem; margin-bottom: 2rem">
+    <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "default-button" %>
+    <%= button_to "Delete", @recipe, method: :delete, class: "default-button red-background", data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+<% end %>
